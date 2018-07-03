@@ -21,6 +21,15 @@ public class HashTableTest {
     }
 
     @Test
+    public void test2_hashFunction() {
+        String key = "thisIsALongKey";
+        int hashArraySize = 6;
+        int expectedHashValue = 2;
+        int hashValue = HashTable.hashFunction(key, hashArraySize);
+        assertEquals(expectedHashValue, hashValue);
+    }
+
+    @Test
     public void test_put_method() {
         HashTable ht = new HashTable(10);
         ht.put("foo", "barski");
@@ -33,6 +42,7 @@ public class HashTableTest {
     public void test_get_method(){
         HashTable ht = new HashTable(10);
         ht.put("foo", "barski");
+        ht.put("key", "value");
         ht.put("food", "truck");
         String expected1 = "barski";
         String expected2 = "truck";

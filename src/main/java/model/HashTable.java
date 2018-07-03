@@ -3,10 +3,11 @@ package model;
 public class HashTable {
 
     private int tableSize;
-    private String[] hash = new String[10];
+    private String[] hash;
 
     public HashTable(int tableSize) {
         this.tableSize = tableSize;
+        this.hash = new String[tableSize];
     }
 
     public int getTableSize() {
@@ -21,8 +22,10 @@ public class HashTable {
     public void put(String key, String value) {
         int size = tableSize;
         int hashValue = hashFunction(key, size);
+        if (!hash[hashValue].equals(null)) {
+            hashValue += 1;
+        }
         hash[hashValue] = value;
-
     }
 
     public String get(String key) {
